@@ -1,0 +1,1974 @@
+<html>
+<head>
+
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>MySQL Terms</th>
+            <th>MongoDB Terms</th>
+            <th>Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td valign="top">Table</td>
+            <td valign="top">Collection</td>
+            <td valign="top">This is the storage container for data that tends to be similar in the contained objects.
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">Row</td>
+            <td valign="top">Document</td>
+            <td valign="top">Defines the single object entity in the table for MySQL and collection in the case of
+                MongoDB.</td>
+        </tr>
+        <tr>
+            <td valign="top">Column</td>
+            <td valign="top">Field</td>
+            <td valign="top">For every stored item, it has properties which are defined by different values and data
+                types. In MongoDB, documents in the same collection, may have different fields from each other. In
+                MySQL, every row must be defined with the same columns from the existing ones.</td>
+        </tr>
+        <tr>
+            <td valign="top">Primary key</td>
+            <td valign="top">Primary key</td>
+            <td valign="top">Every stored object is identified with a unique field value in the case of MongoDB we have
+                _id field set automatically whereas in MySQL you can define your own primary key which is incremental as
+                you create new rows.</td>
+        </tr>
+        <tr>
+            <td valign="top">Table Joins</td>
+            <td valign="top">Embedding and linking documents</td>
+            <td valign="top">Connection associated with an object in a different collection/table to data in another
+                collection/table.</td>
+        </tr>
+        <tr>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">where</span></td>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">$match</span></td>
+            <td valign="top">Selecting data that matches criteria.</td>
+        </tr>
+        <tr>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">group</span></td>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">$group</span></td>
+            <td valign="top">Grouping data according to some criteria.</td>
+        </tr>
+        <tr>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">drop</span></td>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">$unset</span></td>
+            <td valign="top">Removing a column/field from a row/document/</td>
+        </tr>
+        <tr>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">set</span></td>
+            <td valign="top"><span style="font-family:courier new,courier,monospace;">$set</span></td>
+            <td valign="top">Setting the value of an existing column/field to a new value.</td>
+        </tr>
+    </tbody>
+</table>
+
+<br><br>
+
+<table style="width:100%;" id="tab">
+    <thead>
+        <tr>
+            <th style="width:45%">MySQL Table Statements</th>
+            <th style="width:45%">MongoDB Collection Statements</th>
+            <th style="width:10%">Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td valign="top">
+                <p>The database and tables are created explicitly through the PHP admin panel or defined within a script
+                    i.e</p>
+
+                <p>Creating a Database</p>
+
+                <div>
+                    <div id="highlighter_921097" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">CREATE</code> <code
+                                                    class="sql keyword">DATABASE</code> <code
+                                                    class="sql plain">database_name</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>Creating a table</p>
+
+                <div>
+                    <div id="highlighter_378726" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                        <div class="line number5 index4 alt2">5</div>
+                                        <div class="line number6 index5 alt1">6</div>
+                                        <div class="line number7 index6 alt2">7</div>
+                                        <div class="line number8 index7 alt1">8</div>
+                                        <div class="line number9 index8 alt2">9</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">CREATE</code> <code
+                                                    class="sql keyword">TABLE</code> <code
+                                                    class="sql plain">users (</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">id MEDIUMINT </code><code
+                                                    class="sql color1">NOT</code> <code class="sql color1">NULL</code>
+                                            </div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">AUTO_INCREMENT,</code></div>
+                                            <div class="line number4 index3 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">UserId </code><code
+                                                    class="sql keyword">Varchar</code><code
+                                                    class="sql plain">(30),</code></div>
+                                            <div class="line number5 index4 alt2"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">Age Number,</code></div>
+                                            <div class="line number6 index5 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">Gender </code><code
+                                                    class="sql keyword">char</code><code class="sql plain">(1),</code>
+                                            </div>
+                                            <div class="line number7 index6 alt2"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql keyword">Name</code> <code
+                                                    class="sql keyword">VarChar</code><code
+                                                    class="sql plain">(222),</code></div>
+                                            <div class="line number8 index7 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql keyword">PRIMARY</code> <code
+                                                    class="sql keyword">KEY</code> <code class="sql plain">(id)</code>
+                                            </div>
+                                            <div class="line number9 index8 alt2"><code class="sql plain">)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>The database can be created implicitly or explicitly. Implicitly during the first document insert the
+                    database and collection are created as well as an automatic <span
+                        style="font-family:courier new,courier,monospace;">_id</span> field being added to this
+                    document.</p>
+
+                <div>
+                    <div id="highlighter_136698" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                        <div class="line number5 index4 alt2">5</div>
+                                        <div class="line number6 index5 alt1">6</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.insert( {</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">UserId: </code><code
+                                                    class="jscript string">"user1"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Age: 55,</code></div>
+                                            <div class="line number4 index3 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Name: </code><code
+                                                    class="jscript string">"Berry Hellington"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number5 index4 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Gender: </code><code
+                                                    class="jscript string">"F"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number6 index5 alt1"><code
+                                                    class="jscript spaces">&nbsp;</code><code
+                                                    class="jscript plain">} )</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>You can also create the database explicitly by running this comment in the Mongo Shell</p>
+
+                <div>
+                    <div id="highlighter_907305" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.createCollection(</code><code
+                                                    class="jscript string">"users"</code><code
+                                                    class="jscript plain">)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>In MySQL, you have to specify the columns in the table you are creating as well as setting some
+                    validation rules like in this example the type of data and length that goes to a specific column. In
+                    the case of MongoDB, it is not a must to define neither the fields each document should hold nor the
+                    validation rules the specified fields should hold.</p>
+
+                <p>However, in MongoDB for data integrity and consistency you can set the validation rules using the <a
+                        href="https://docs.mongodb.com/manual/core/schema-validation/" rel="nofollow"
+                        target="_blank">JSON SCHEMA VALIDATOR</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>Dropping a table</p>
+
+                <div>
+                    <div id="highlighter_884942" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code class="sql keyword">DROP</code>
+                                                <code class="sql keyword">TABLE</code> <code
+                                                    class="sql plain">users</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_576324" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.drop()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>This are statements for deleting a table for MySQL and collection in the case of MongoDB.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>Adding a new column called join_date</p>
+
+                <div>
+                    <div id="highlighter_386893" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code class="sql keyword">ALTER</code>
+                                                <code class="sql keyword">TABLE</code> <code
+                                                    class="sql plain">users </code><code class="sql keyword">ADD</code>
+                                                <code class="sql plain">join_date DATETIME</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>Removing the join_date column if already defined</p>
+
+                <div>
+                    <div id="highlighter_722046" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code class="sql keyword">ALTER</code>
+                                                <code class="sql keyword">TABLE</code> <code
+                                                    class="sql plain">users </code><code class="sql keyword">DROP</code>
+                                                <code class="sql keyword">COLUMN</code> <code
+                                                    class="sql plain">join_date DATETIME</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Adding a new field called join_date</p>
+
+                <div>
+                    <div id="highlighter_546569" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.updateMany({},{$set:{‘join_date’: </code><code
+                                                    class="jscript keyword">new</code> <code
+                                                    class="jscript plain">Date()})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>This will update all documents in the collection to have the join date as the current date.</p>
+
+                <p>Removing the join_date field if already defined</p>
+
+                <div>
+                    <div id="highlighter_273055" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.updateMany({},{$unset:{‘join_date’: “”})</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>This will remove the join_date field from all the collection documents.</p>
+            </td>
+            <td valign="top">
+                <p>Altering the structure of the schema by either adding or dropping a column/field.</p>
+
+                <p>Since the MongoDB architecture does not strictly enforce on the document structure, documents may
+                    have fields different from each other.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>Creating an index with the <span style="font-family:courier new,courier,monospace;">UserId</span>
+                    column ascending and <span style="font-family:courier new,courier,monospace;">Age</span> descending
+                </p>
+
+                <div>
+                    <div id="highlighter_462401" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">CREATE</code> <code
+                                                    class="sql keyword">INDEX</code> <code
+                                                    class="sql plain">idx_UserId_asc_Age_desc</code></div>
+                                            <div class="line number2 index1 alt1"><code class="sql keyword">ON</code>
+                                                <code class="sql plain">users(UserId)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Creating an index involving the<span style="font-family:courier new,courier,monospace;">
+                        UserId</span> and <span style="font-family:courier new,courier,monospace;">Age</span> fields.
+                </p>
+
+                <div>
+                    <div id="highlighter_552482" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.ensureIndex( { UserId: 1, Age: -1 } )</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Indices are generally created to facilitate the querying process.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_625739" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                        <div class="line number5 index4 alt2">5</div>
+                                        <div class="line number6 index5 alt1">6</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">INSERT</code> <code
+                                                    class="sql keyword">INTO</code> <code
+                                                    class="sql plain">users(UserId,</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">Age,</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">Gender)</code></div>
+                                            <div class="line number4 index3 alt1"><code
+                                                    class="sql keyword">VALUES</code> <code
+                                                    class="sql plain">(</code><code
+                                                    class="sql string">"user1"</code><code class="sql plain">,</code>
+                                            </div>
+                                            <div class="line number5 index4 alt2"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql plain">25,</code></div>
+                                            <div class="line number6 index5 alt1"><code
+                                                    class="sql spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="sql string">"M"</code><code class="sql plain">)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_869275" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                        <div class="line number5 index4 alt2">5</div>
+                                        <div class="line number6 index5 alt1">6</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.insert( {</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">UserId: </code><code
+                                                    class="jscript string">"bcd001"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Age: 25,</code></div>
+                                            <div class="line number4 index3 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Gender: </code><code
+                                                    class="jscript string">"M"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number5 index4 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">Name: </code><code
+                                                    class="jscript string">"Berry Hellington"</code><code
+                                                    class="jscript plain">,</code></div>
+                                            <div class="line number6 index5 alt1"><code class="jscript plain">} )</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Inserting new records.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_543447" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">DELETE</code> <code
+                                                    class="sql keyword">FROM</code> <code class="sql plain">users</code>
+                                            </div>
+                                            <div class="line number2 index1 alt1"><code class="sql keyword">WHERE</code>
+                                                <code class="sql plain">Age = 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_377735" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.deleteMany( { Age = 25 } )</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Deleting records from the table/collection whose age is equal to 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_911826" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">DELETE</code> <code
+                                                    class="sql keyword">FROM</code> <code class="sql plain">users</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_991913" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.deleteMany({})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Deleting all records from the table/collection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_94487" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_686713" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection with all columns/fields.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_362972" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">id, Age, Gender </code><code
+                                                    class="sql keyword">FROM</code> <code class="sql plain">users</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_535031" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ },</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ Age: 1, Gender: 1 }</code></div>
+                                            <div class="line number4 index3 alt1"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection with Age, Gender and primary key columns/fields.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_37956" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code>&nbsp; <code
+                                                    class="sql plain">Age, Gender </code><code
+                                                    class="sql keyword">FROM</code> <code class="sql plain">users</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_213815" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ },</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;</code><code
+                                                    class="jscript plain">{ Age: 1, Gender: 1,_id: 0}</code></div>
+                                            <div class="line number4 index3 alt1"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection with Age and Gender columns/fields. The primary
+                    key is omitted.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_618046" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Gender = “M”</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_834083" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Gender: </code><code
+                                                    class="jscript string">"M"</code><code
+                                                    class="jscript plain">})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Gender value is set to M.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_257182" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">Gender </code><code
+                                                    class="sql keyword">FROM</code> <code
+                                                    class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Age = 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_898970" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Age: 25}, { _id: 0, Gender: 1})</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection with only the Gender value but whose Age value is
+                    equal to 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_794735" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Age = 25 </code><code
+                                                    class="sql color1">AND</code> <code
+                                                    class="sql plain">Gender = ‘F’</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_490723" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Age: 25, Gender: </code><code
+                                                    class="jscript string">"F"</code><code
+                                                    class="jscript plain">})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Gender value is set to F and Age is 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_921087" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code>&nbsp; <code
+                                                    class="sql plain">Age != 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_353898" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Age:{$ne: 25}})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Age value is not equal to 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_252532" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Age = 25 </code><code class="sql color1">OR</code>
+                                                <code class="sql plain">Gender = ‘F’</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_332930" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({$or:[{Age: 25, Gender: </code><code
+                                                    class="jscript string">"F"</code><code
+                                                    class="jscript plain">}]})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Gender value is set to F or Age is 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_913743" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Age &gt; 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_677229" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Age:{$gt: 25}})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Age value is greater than 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_297509" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Age &lt;= 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_703467" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({ Age:{$lte: 25}})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Age value is less than or equal to 25.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_734638" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql keyword">Name</code> <code
+                                                    class="sql keyword">FROM</code> <code
+                                                    class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql keyword">Name</code> <code class="sql color1">like</code>
+                                                <code class="sql string">"He%"</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_75396" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ Name: /He/ }</code></div>
+                                            <div class="line number3 index2 alt2"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Name value happens to have <span
+                        style="font-family:courier new,courier,monospace;">He</span> letters.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_432552" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Gender = ‘F’ </code><code
+                                                    class="sql keyword">ORDER</code> <code class="sql keyword">BY</code>
+                                                <code class="sql plain">id </code><code class="sql keyword">ASC</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_851979" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find( { Gender: </code><code
+                                                    class="jscript string">"F"</code> <code
+                                                    class="jscript plain">} ).sort( { $natural: 1 } )</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Gender value is set to F and sorts this
+                    result in the ascending order of the id column in case of MySQL and time inserted in the case of
+                    MongoDB.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_454285" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Gender = ‘F’ </code><code
+                                                    class="sql keyword">ORDER</code> <code class="sql keyword">BY</code>
+                                                <code class="sql plain">id </code><code class="sql keyword">DESC</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_808865" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find( { Gender: </code><code
+                                                    class="jscript string">"F"</code> <code
+                                                    class="jscript plain">} ).sort( { $natural: -1 } )</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns all records from the users table/collection whose Gender value is set to F and sorts this
+                    result in the descending order of the id column in case of MySQL and time inserted in the case of
+                    MongoDB.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_62492" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql color2">COUNT</code><code
+                                                    class="sql plain">(*) </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_55358" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.count()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>or</p>
+
+                <div>
+                    <div id="highlighter_865834" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find().count()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Counts all records in the users table/collection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_849797" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql color2">COUNT</code><code class="sql plain">(</code><code
+                                                    class="sql keyword">Name</code><code
+                                                    class="sql plain">) </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_802103" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.count({Name:{ $exists: </code><code
+                                                    class="jscript keyword">true</code> <code
+                                                    class="jscript plain">}})</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>or</p>
+
+                <div>
+                    <div id="highlighter_638396" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find({Name:{ $exists: </code><code
+                                                    class="jscript keyword">true</code> <code
+                                                    class="jscript plain">}}).count()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Counts all records in the users table/collection who happen to have a value for the Name property.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_314520" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users LIMIT 1</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_934412" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.findOne()</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p>or</p>
+
+                <div>
+                    <div id="highlighter_861701" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find().limit(1)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns the first record in the users table/collection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_697064" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">Gender = ‘F’ LIMIT 1</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_145999" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find( { Gender: </code><code
+                                                    class="jscript string">"F"</code> <code
+                                                    class="jscript plain">} ).limit(1)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns the first record in the users table/collection that happens to have Gender value equal to F.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_444720" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">SELECT</code> <code
+                                                    class="sql plain">* </code><code class="sql keyword">FROM</code>
+                                                <code class="sql plain">users LIMIT 5 SKIP 10</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_589949" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.find().limit(5).skip(10)</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>Returns the five records in the users table/collection after skipping the first five records.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_798407" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">UPDATE</code> <code
+                                                    class="sql plain">users </code><code class="sql keyword">SET</code>
+                                                <code class="sql plain">Age = 26 </code><code
+                                                    class="sql keyword">WHERE</code> <code
+                                                    class="sql plain">age &gt; 25</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_884198" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.updateMany(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ age: { $gt: 25 } },</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ $set: { Age: 26 } }</code></div>
+                                            <div class="line number4 index3 alt1"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>This sets the age of all records in the users table/collection who have the age greater than 25 to
+                    26.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_202135" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">UPDATE</code> <code
+                                                    class="sql plain">users </code><code class="sql keyword">SET</code>
+                                                <code class="sql plain">age = age + 1</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_993497" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.updateMany(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{} ,</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ $inc: { age: 1 } }</code></div>
+                                            <div class="line number4 index3 alt1"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>This increases the age of all records in the users table/collection by 1.</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_165440" class="syntaxhighlighter  sql">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="sql keyword">UPDATE</code> <code
+                                                    class="sql plain">users </code><code class="sql keyword">SET</code>
+                                                <code class="sql plain">age = age - 1</code></div>
+                                            <div class="line number2 index1 alt1"><code class="sql keyword">WHERE</code>
+                                                <code class="sql plain">id = 1</code></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <div id="highlighter_764801" class="syntaxhighlighter  jscript">
+                        <div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div>
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gutter">
+                                        <div class="line number1 index0 alt2">1</div>
+                                        <div class="line number2 index1 alt1">2</div>
+                                        <div class="line number3 index2 alt2">3</div>
+                                        <div class="line number4 index3 alt1">4</div>
+                                    </td>
+                                    <td class="code">
+                                        <div class="container">
+                                            <div class="line number1 index0 alt2"><code
+                                                    class="jscript plain">db.users.updateMany(</code></div>
+                                            <div class="line number2 index1 alt1"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{} ,</code></div>
+                                            <div class="line number3 index2 alt2"><code
+                                                    class="jscript spaces">&nbsp;&nbsp;</code><code
+                                                    class="jscript plain">{ $inc: { age: -1 } }</code></div>
+                                            <div class="line number4 index3 alt1"><code class="jscript plain">)</code>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td valign="top">
+                <p>This decrements the age of the first record in the users table/collection by 1.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
